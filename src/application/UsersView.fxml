@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.UsersViewController" alignment="TOP_CENTER" spacing="20" style="-fx-padding: 20;" prefWidth="1200" prefHeight="800">
+    <!-- Main label for user management -->
+    <Label text="User Management" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-padding: 0 0 10 0;"/>
+    
+    <!-- ScrollPane for content -->
+    <ScrollPane fitToWidth="true" fitToHeight="true">
+        <VBox spacing="10" alignment="CENTER" stylesheets="@../application/style.css" styleClass="background-vbox">
+            
+            <!-- Section for adding a new user -->
+            <VBox alignment="CENTER" spacing="5" style="-fx-padding: 10; -fx-background-color: #ecf0f1; -fx-border-color: #bdc3c7; -fx-border-style: solid inside; -fx-border-width: 1; -fx-width: 100%; -fx-max-width: 300px;">
+                <Label text="--- Add a User ---" style="-fx-font-size: 16px;"/>
+                <TextField fx:id="firstNameField" promptText="First Name" prefWidth="200" prefHeight="30"/>
+                <TextField fx:id="lastNameField" promptText="Last Name" prefWidth="200" prefHeight="30"/>
+                <TextField fx:id="emailField" promptText="Email" prefWidth="200" prefHeight="30"/>
+                <TextField fx:id="addressField" promptText="Address" prefWidth="200" prefHeight="30"/>
+                <TextField fx:id="phoneField" promptText="Phone Number" prefWidth="200" prefHeight="30"/>
+                <Button text="Add User" onAction="#handleAddUserAction" styleClass="button"/>
+                <Label fx:id="userResponseLabel"/>
+            </VBox>
+
+            <!-- Section for modifying an existing user -->
+            <VBox alignment="CENTER" spacing="5" style="-fx-padding: 10; -fx-background-color: #ecf0f1; -fx-border-color: #bdc3c7; -fx-border-style: solid inside; -fx-border-width: 1; -fx-width: 100%; -fx-max-width: 300px;">
+                <Label text="--- Modify a User ---" style="-fx-font-size: 16px;"/>
+                <ComboBox fx:id="modUserComboBox" promptText="Select a User" prefWidth="200" prefHeight="30"/>
+                <TextField fx:id="modFirstNameField" promptText="Modify First Name" prefWidth="200" prefHeight="30"/>
+                <TextField fx:id="modLastNameField" promptText="Modify Last Name" prefWidth="200" prefHeight="30"/>
+                <TextField fx:id="modEmailField" promptText="Modify Email" prefWidth="200" prefHeight="30"/>
+                <TextField fx:id="modAddressField" promptText="Modify Address" prefWidth="200" prefHeight="30"/>
+                <TextField fx:id="modPhoneField" promptText="Modify Phone" prefWidth="200" prefHeight="30"/>
+                <Button text="Save Changes" onAction="#handleUpdateUser" styleClass="button"/>
+                <Label fx:id="updateResponseLabel"/>
+            </VBox>
+
+            <!-- Section for searching and displaying user information -->
+            <VBox alignment="CENTER" spacing="5" style="-fx-padding: 10; -fx-background-color: #ecf0f1; -fx-border-color: #bdc3c7; -fx-border-style: solid inside; -fx-border-width: 1; -fx-width: 100%; -fx-max-width: 300px;">
+                <Label text="User Search" style="-fx-font-weight: bold; -fx-font-size: 16px;" />
+                <ComboBox fx:id="searchUserComboBox" promptText="Select a User" prefWidth="200" prefHeight="30"/>
+                <Button text="Search User" onAction="#handleSearchUserAction" styleClass="button"/>
+                <AnchorPane>
+                    <TextArea fx:id="userInfoTextArea" wrapText="true" editable="false" prefWidth="900" prefHeight="150"/>
+                    <AnchorPane.bottomAnchor>10</AnchorPane.bottomAnchor>
+                    <AnchorPane.leftAnchor>10</AnchorPane.leftAnchor>
+                    <AnchorPane.rightAnchor>10</AnchorPane.rightAnchor>
+                    <AnchorPane.topAnchor>10</AnchorPane.topAnchor>
+                </AnchorPane>
+            </VBox>
+        </VBox>
+    </ScrollPane>
+</VBox>
