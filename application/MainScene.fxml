@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TextArea?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainSceneController">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Section de Recherche par Titre et Auteur -->
+    <top>
+        <HBox spacing="10" alignment="TOP_LEFT">
+            <!-- Label pour le nombre de livres en retard avec style d'alerte -->
+            <VBox spacing="5">
+                <Label fx:id="overdueBooksCountLabel" text="Calcul en cours..." 
+                       style="-fx-text-fill: red; -fx-font-size: 18px; -fx-font-weight: bold; -fx-background-color: yellow; -fx-padding: 5;" />
+            </VBox>
+            <VBox spacing="5">
+                <Button text="Afficher les emprunts en retard" onAction="#handleShowLateLoans"/>
+                <TextArea fx:id="lateLoansTextArea" editable="false" wrapText="true" maxHeight="200.0"/>
+            </VBox>
+            <VBox spacing="5">
+                <Label text="Rechercher un livre par Titre et Auteur"/>
+                <TextField fx:id="titleField" promptText="Entrez le titre"/>
+                <TextField fx:id="authorField" promptText="Entrez l'auteur"/>
+                <TextField fx:id="dateField" promptText="Entrez la date"/>
+                <Button text="Rechercher" onAction="#handleSearchAction"/>
+                <Label fx:id="searchResponseLabel" style="-fx-text-fill: green;"/>
+                <Label fx:id="availabilityLabel" style="-fx-text-fill: green;" />
+            </VBox>
+            <VBox spacing="5">
+                <ComboBox fx:id="topBooksComboBox" promptText="Livres les plus empruntés:" prefWidth="200"/>
+            </VBox>   
+        </HBox>
+    </top>
+    
+    
+    <!-- Sections pour l'ajout de livre et utilisateur -->
+    <bottom>
+        <HBox spacing="20">
+            <VBox spacing="10">
+                <Label style="-fx-font-weight: bold;" text="--- Ajouter un livre ---"/>
+                <TextField fx:id="inputField" promptText="Entrez l'ISBN du livre"/>
+                <Button text="Ajouter Livre" onAction="#handleSubmitButtonAction"/>
+                <Label fx:id="responseLabel" style="-fx-text-fill: green;"/>
+            </VBox>
+            <VBox spacing="10">
+                <Label style="-fx-font-weight: bold;" text="--- Ajouter un utilisateur ---"/>
+                <TextField fx:id="lastNameField" promptText="Nom"/>
+                <TextField fx:id="firstNameField" promptText="Prénom"/>
+                <TextField fx:id="emailField" promptText="Email"/>
+                <Button text="Ajouter Utilisateur" onAction="#handleAddUserAction"/>
+                <Label fx:id="userResponseLabel" style="-fx-text-fill: green;"/>
+            </VBox>
+            <VBox spacing="10">
+                <Label style="-fx-font-weight: bold;" text="--- Modifier un utilisateur ---"/>
+                <ComboBox fx:id="modUserComboBox" promptText="Sélectionnez un utilisateur"/>
+                <TextField fx:id="modLastNameField" promptText="Modifier le nom"/>
+                <TextField fx:id="modFirstNameField" promptText="Modifier le prénom"/>
+                <TextField fx:id="modEmailField" promptText="Modifier l'email"/>
+                <Button text="Sauvegarder les modifications" onAction="#handleUpdateUser"/>
+                <Label fx:id="updateResponseLabel" style="-fx-text-fill: blue;"/>
+            </VBox>
+	        <VBox spacing="10" alignment="CENTER" style="-fx-padding: 10;">
+	            <Label text="Recherche d'utilisateur" style="-fx-font-weight: bold;" />
+	            <ComboBox fx:id="searchUserComboBox" promptText="Sélectionnez un utilisateur"/>
+	            <Button text="Rechercher Utilisateur" onAction="#handleSearchUserAction"/>
+	            <TextArea fx:id="userInfoTextArea" prefHeight="200"/>
+	        </VBox>
+        </HBox>
+    </bottom>
+    
+    <!-- Section pour effectuer un emprunt -->
+    <center>
+    <HBox alignment="CENTER" spacing="20">
+        <!-- Section existante pour effectuer un emprunt -->
+        <VBox spacing="10" alignment="CENTER">
+            <Label style="-fx-font-weight: bold;" text="--- Effectuer un emprunt ---"/>
+            <ComboBox fx:id="userComboBox" promptText="Sélectionnez un utilisateur"/>
+            <ComboBox fx:id="bookComboBox" promptText="Sélectionnez un livre"/>
+            <Button text="Emprunter" onAction="#handleLoanAction"/>
+            <Label fx:id="loanResponseLabel" style="-fx-text-fill: green;"/>
+        </VBox>
+
+        <!-- Nouvelle section pour rendre un livre -->
+        <VBox spacing="10" alignment="CENTER">
+            <Label style="-fx-font-weight: bold;" text="--- Rendre un livre ---"/>
+            <ComboBox fx:id="returnUserComboBox" promptText="Sélectionnez l'utilisateur"/>
+            <ComboBox fx:id="returnBookComboBox" promptText="Sélectionnez le livre"/>
+            <Button text="Rendre" onAction="#handleReturnAction"/>
+            <Label fx:id="returnResponseLabel" style="-fx-text-fill: green;"/>
+        </VBox>
+    </HBox>
+</center>
+
+</BorderPane>
