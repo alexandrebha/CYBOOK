@@ -12,11 +12,20 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import api.BNFApiClient;
 
+/**
+ * User Data Access Object (DAO) to manage database operations related to loans.
+ */
 public class LoanDao {
-    private BNFApiClient apiClient = new BNFApiClient();
+	
+	/**
+     * Constructeur par défaut.
+     */
+    public LoanDao() {
+        // Default constructor
+    }
 
+	
     /**
      * Method to retrieve all loans from the database.
      * @return a list of all loans.

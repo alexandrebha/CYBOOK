@@ -21,9 +21,27 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import dao.BookDao;
 
+
+/**
+ * Client API pour interagir avec la BNF (Bibliothèque Nationale de France).
+ * <p>
+ * Cette classe fournit des méthodes pour récupérer les détails des livres
+ * en utilisant l'API de la BNF.
+ * </p>
+ */
+
+
 public class BNFApiClient {
+	
     private BookDao bookDao = new BookDao();
     private final HttpClient client = HttpClient.newHttpClient();
+    
+    /**
+     * Constructeur par défaut.
+     */
+    public BNFApiClient() {
+        // Default constructor
+    }
 
     /**
      * Method to fetch book details by ISBN.
@@ -150,20 +168,6 @@ public class BNFApiClient {
         return ""; // Return an empty string if the information is not found
     }
 
-    /**
-     * Method to extract ISBN from the XML Document.
-     * @param doc The XML Document containing the ISBN.
-     * @return String containing the ISBN.
-     */
-    private String extractISBN(Document doc) {
-        NodeList nodes = doc.getElementsByTagNameNS("*", "subfield");
-        for (int i = 0; i < nodes.getLength(); i++) {
-            if ("a".equals(nodes.item(i).getAttributes().getNamedItem("code").getNodeValue())) {
-                return nodes.item(i).getTextContent();
-            }
-        }
-        return null;
-    }
 
     /**
      * Method to extract title from the XML Document.

@@ -22,7 +22,9 @@ import dao.LoanDao;
 import api.BNFApiClient;
 import model.Book;
 import model.DetailedBook;
-
+/**
+ * Controller class for managing book-related operations in the application.
+ */
 public class BooksViewController {
     // FXML annotations for UI elements
     @FXML private TextField titleField; // TextField for entering the book title
@@ -51,6 +53,13 @@ public class BooksViewController {
     private BNFApiClient apiClient = new BNFApiClient();
     private BookDao bookDao = new BookDao();
     private LoanDao loanDao = new LoanDao();
+    
+    /**
+     * Default constructor.
+     */
+    public BooksViewController() {
+        // Default constructor
+    }
 
     /**
      * Initialize method called after FXML is loaded.
@@ -158,25 +167,6 @@ public class BooksViewController {
         booksTable.setItems(FXCollections.observableArrayList(books));
     }
 
-    /**
-     * Check the availability of a book by ISBN.
-     *
-     * @param isbn The ISBN of the book
-     * @return The availability status of the book
-     */
-    private String checkAvailability(String isbn) {
-        Book book = bookDao.findBookByISBN(isbn);
-        if (book != null) {
-            int stock = book.getStock();
-            if (stock > 0) {
-                return "In stock (" + stock + ")";
-            } else {
-                return "Out of stock";
-            }
-        } else {
-            return "Not available";
-        }
-    }
 
     /**
      * Handle the action of submitting a new book by ISBN.

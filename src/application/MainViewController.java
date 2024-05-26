@@ -15,6 +15,13 @@ public class MainViewController {
     @FXML private Label overdueBooksCountLabel;
     @FXML private StackPane contentArea;
     @FXML private LoanDao loanDao = new LoanDao();
+    
+    /**
+     * Constructeur par défaut.
+     */
+    public MainViewController() {
+        // Default constructor
+    }
 
     /**
      * Shows the Loans view.

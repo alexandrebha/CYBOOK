@@ -37,6 +37,13 @@ public class UsersViewController {
 
     private UserDao userDao = new UserDao();
     private LoanDao loanDao = new LoanDao();
+    
+    /**
+     * Default constructor.
+     */
+    public UsersViewController() {
+        // Default constructor
+    }
 
     /**
      * Called to initialize a controller after its root element has been completely processed.

@@ -9,8 +9,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * User Data Access Object (DAO) to manage database operations related to books.
+ */
 public class BookDao {
+	
+	/**
+     * Constructeur par défaut.
+     */
+    public BookDao() {
+        // Default constructor
+    }
 
     /**
      * Method to retrieve all books from the database.

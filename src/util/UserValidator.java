@@ -5,6 +5,13 @@ package util;
  * It provides methods to validate user names, email addresses, addresses, and phone numbers.
  */
 public class UserValidator {
+	
+	 /**
+     * Constructeur par défaut.
+     */
+    public UserValidator() {
+        // Default constructor
+    }
 
     /**
      * Validates a user's name (either first name or last name).

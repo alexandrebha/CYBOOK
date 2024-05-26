@@ -10,6 +10,13 @@ import javafx.scene.layout.BorderPane;
  * Main class to launch the JavaFX application.
  */
 public class Main extends Application {
+	
+	/**
+     * Constructeur par défaut.
+     */
+    public Main() {
+        // Default constructor
+    }
 
     /**
      * Starts the JavaFX application.

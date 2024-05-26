@@ -19,7 +19,9 @@ import java.util.Date;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
-
+/**
+ * Controller class for managing loans-related operations in the application.
+ */
 public class LoansViewController {
     @FXML private ComboBox<User> userComboBox; // ComboBox for selecting a user for loaning a book
     @FXML private ComboBox<Book> bookComboBox; // ComboBox for selecting a book to loan
@@ -34,6 +36,13 @@ public class LoansViewController {
     private BookDao bookDao = new BookDao();
     private UserDao userDao = new UserDao();
     private LoanDao loanDao = new LoanDao();
+    
+    /**
+     * Default constructor.
+     */
+    public LoansViewController() {
+        // Default constructor
+    }
 
     /**
      * Initialize method to load initial data and setup listeners.
@@ -149,26 +158,20 @@ public class LoansViewController {
     private void handleReturnAction() {
         User selectedUser = returnUserComboBox.getSelectionModel().getSelectedItem();
         Book selectedBook = returnBookComboBox.getSelectionModel().getSelectedItem();
-
-        if (selectedUser != null && selectedBook != null) {
-            boolean returned = loanDao.returnLoan(selectedUser.getId(), selectedBook.getIsbn());
-            if (returned) {
-                returnResponseLabel.setText("The book was successfully returned.");
+            boolean isReturnSuccessfully = loanDao.returnLoan(selectedUser.getId(), selectedBook.getIsbn());
+            if (isReturnSuccessfully) {
+                updateResponseLabel(returnResponseLabel, "The book was successfully returned.", true);
                 loadBooks();  // Refresh the book list to update the stock
                 loadUsers();  // Refresh users if necessary
             }
 
-            boolean isReturnSuccessfully = loanDao.returnLoan(selectedUser.getId(), selectedBook.getIsbn());
-            if (isReturnSuccessfully) {
-                updateResponseLabel(returnResponseLabel, "The book was successfully returned.", true);
-            }
-
-        } else {
+            else {
             returnResponseLabel.setText("Please select a user and a book.");
             updateResponseLabel(returnResponseLabel, "Please select a user and a book.", false);
-        }
-        updateOverdueBooksCount();
+            }
+            updateOverdueBooksCount();
     }
+    
 
     /**
      * Handle the action of showing late loans.

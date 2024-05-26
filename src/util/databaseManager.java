@@ -9,6 +9,13 @@ import java.sql.SQLException;
  * It provides a method to get a connection to the MySQL database.
  */
 public class databaseManager {
+	/**
+     * Constructeur par défaut.
+     */
+    public databaseManager() {
+        // Default constructor
+    }
+	
     static {
         try {
             // Load the MySQL JDBC driver
